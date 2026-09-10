@@ -1,6 +1,8 @@
+import 'package:bookly_app/Features/Fhome/data/presntation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../Core/app_images.dart';
+import 'package:get/get.dart';
+import '../../../../../Core/app_images.dart';
 import 'animation_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -11,7 +13,7 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<Offset> slidingAnimation;
   late Animation<double> opacityAnimation;
@@ -19,32 +21,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-    slidingAnimation = Tween<Offset>(
-      begin: Offset(0, 10),
-      end: Offset.zero,
-    ).animate(_animationController);
-    _animationController.forward();
-
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
-    );
-    opacityAnimation = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(_animationController);
-    _animationController.forward();
+    initTextAnimation();
+    navigateToHomeView();
   }
+
+
 
   @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
-
   }
 
   @override
@@ -65,5 +51,36 @@ class _SplashViewBodyState extends State<SplashViewBody>
         ],
       ),
     );
+  }
+
+  void initTextAnimation() {
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    slidingAnimation = Tween<Offset>(
+      begin: Offset(0, 10),
+      end: Offset.zero,
+    ).animate(_animationController);
+
+    opacityAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(_animationController);
+    _animationController.forward();
+  }
+
+
+
+
+
+  void navigateToHomeView() {
+    Future.delayed(const Duration(milliseconds: 1800), () {
+      Get.to(
+        HomeView(),
+        transition: Transition.zoom,
+        duration: const Duration(milliseconds: 1000),
+      );
+    });
   }
 }

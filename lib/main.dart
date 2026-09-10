@@ -2,7 +2,7 @@ import 'package:bookly_app/Core/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import 'Features/Presentation/views/splash_view.dart';
+import 'Features/Fsplash/Presentation/views/splash_view.dart';
 
 void main() {
   runApp(BookyApp());
