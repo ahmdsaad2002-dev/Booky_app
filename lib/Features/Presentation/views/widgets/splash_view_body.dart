@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../Core/app_images.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -13,6 +13,10 @@ class SplashViewBody extends StatelessWidget {
         children: [
           Center(
             child: SvgPicture.asset(AppImages.logo, width: 75, height: 75),
+          ),
+          SizedBox(height: 35),
+          const Text(
+            "Read Free Books",
           ),
         ],
       ),
