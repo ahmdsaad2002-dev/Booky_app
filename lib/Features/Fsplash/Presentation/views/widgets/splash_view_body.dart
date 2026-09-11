@@ -1,8 +1,8 @@
-import 'package:bookly_app/Features/Fhome/data/presntation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../Core/app_images.dart';
+import '../../../../Fhome/presntation/views/home_view.dart';
 import 'animation_text.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -24,8 +24,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     initTextAnimation();
     navigateToHomeView();
   }
-
-
 
   @override
   void dispose() {
@@ -70,13 +68,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     _animationController.forward();
   }
 
-
-
-
-
   void navigateToHomeView() {
     Future.delayed(const Duration(milliseconds: 1800), () {
-      Get.to(
+      Get.off(
         HomeView(),
         transition: Transition.zoom,
         duration: const Duration(milliseconds: 1000),
